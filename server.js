@@ -1,18 +1,13 @@
 const express = require('express');
-const app = express();
 const path = require('path');
 
-app.use(express.static('public'));
+const app = express();
 
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+// Serve static files from root and subfolders
+app.use(express.static(__dirname));
 
-app.get('/Register/register.html', (req, res) => {
-  res.sendFile(path.join(__dirname, '/Register/register.html'));
-});
-
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
